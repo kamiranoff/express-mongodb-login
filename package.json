@@ -11,8 +11,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prestart": "npm run -s build",
-    "start": "NODE_ENV=production node dist/index.js",
-    "dev": "nodemon server/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "start-build": "NODE_ENV=production node dist/index.js",
+    "start": "nodemon server/index.js --exec \"node -r dotenv/config -r babel-register\"",
     "clean": "rimraf dist",
     "build": "npm run clean && mkdir -p dist && babel server -s -D -d dist",
     "test": "jest --watch",
