@@ -14,7 +14,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "dev": "nodemon server/index.js --exec \"node -r dotenv/config -r babel-register\"",
     "clean": "rimraf dist",
-    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "build": "npm run clean && mkdir -p dist && babel server -s -D -d dist",
     "test": "jest --watch",
     "lint": "esw -w server test"
   },
