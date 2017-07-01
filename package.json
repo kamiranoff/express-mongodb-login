@@ -15,7 +15,8 @@
     "start": "nodemon server/index.js --exec \"node -r dotenv/config -r babel-register\"",
     "clean": "rimraf dist",
     "build": "npm run clean && mkdir -p dist && babel server -s -D -d dist",
-    "test": "jest --watch",
+    "test-watch": "jest --watch --verbose",
+    "test": "jest --verbose",
     "lint": "esw -w server test"
   },
   "dependencies": {
@@ -73,7 +74,8 @@
     }
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec|shallow))\\.jsx?$"
   },
   "bugs": {
     "url": "https://github.com/vmasto/express-babel/issues"
