@@ -81,7 +81,8 @@
       "!**/dist/**"
     ],
     "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec|shallow))\\.jsx?$"
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec|shallow))\\.jsx?$",
+    "testPathIgnorePatterns":["/node_modules/","/dist/"]
   },
   "bugs": {
     "url": "https://github.com/vmasto/express-babel/issues"
