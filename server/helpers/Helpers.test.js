@@ -7,6 +7,7 @@ describe('Helpers', () => {
       const array2 = Helpers.shuffle(array1);
       expect(array2).toBeInstanceOf(Array);
       expect(array2).toHaveLength(10);
+      expect(array2).toContain(1);
     });
   });
 });

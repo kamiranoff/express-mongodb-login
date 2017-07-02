@@ -74,6 +74,14 @@
     }
   },
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "!**/dist/**"
+    ],
     "testEnvironment": "node",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec|shallow))\\.jsx?$"
   },
