@@ -3,7 +3,7 @@ import HttpStatus from 'http-status-codes';
 import request from 'supertest';
 
 import app from '../../app';
-
+import User from './models/User';
 import { users, populateUsers } from '../../test/seed/seed';
 
 beforeEach(populateUsers);
@@ -22,9 +22,26 @@ describe('POST users/', () => {
       .send(user)
       .expect(HttpStatus.OK)
       .expect((res) => {
+        expect(res.headers['x-auth']).toBeDefined();
         expect(res.body.email).toBe(user.email);
         expect(res.body.password).toBeUndefined();
+        expect(res.body._id).toBeDefined();
       });
+  });
+
+  it('it should hash the password', async () => {
+    const mockUser = {
+      email: 'aphrodite5@test.com',
+      password: 'testPasword',
+    };
+    await request(app)
+      .post('/users')
+      .send(mockUser)
+      .expect(HttpStatus.OK);
+    await User.findOne({ email: mockUser.email }).then((user) => {
+      expect(user).toBeDefined();
+      expect(user.password).not.toBe(mockUser.password);
+    });
   });
 
   it('it should reject if email already exist', async () => {
@@ -45,7 +62,7 @@ describe('POST users/', () => {
 
   it('it should reject if password not long enough', async () => {
     const user = {
-      email: 'aphrodite5@test.com',
+      email: 'aphrodite6@test.com',
       password: 'test',
     };
     await request(app)
