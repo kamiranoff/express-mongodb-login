@@ -44,7 +44,7 @@ The routes available are :
 
 ```
 curl -s -D - POST \
-  http://localhost:3000/api/users \
+  http://localhost:3000/api/users/signup \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/x-www-form-urlencoded' \
   -d 'email=aphrodite%40test.com&password=aphrodite'
